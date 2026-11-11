@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coincidle — The Daily Movie + History Game</title>
+<style type="text/css">@font-face {font-family:'Limelight';font-style:normal;font-weight:400;src:url(/cf-fonts/s/limelight/5.2.7/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Limelight';font-style:normal;font-weight:400;src:url(/cf-fonts/s/limelight/5.2.7/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/v/josefin-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:600;src:url(/cf-fonts/v/josefin-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:600;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:600;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/josefin-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Josefin Sans';font-style:normal;font-weight:700;src:url(/cf-fonts/v/josefin-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Playfair Display';font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Playfair Display';font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Playfair Display';font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Playfair Display';font-style:normal;font-weight:700;src:url(/cf-fonts/v/playfair-display/5.2.8/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}</style>
+<style>
+:root{--bg:#0b0606;--velvet:#5c0a12;--velvet2:#8b1220;--gold:#e8b84a;--gold2:#fff1c1;--card:#160d0c;--card2:#2a1a14;--teal:#e8b84a;--red:#c8323c;--txt:#f6ead2;--mut:#a8977a}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Josefin Sans',system-ui,sans-serif;color:var(--txt);min-height:100vh;background:
+ radial-gradient(ellipse at 50% 0%,#3a2410 0,transparent 55%),var(--bg)}
+/* velvet curtains */
+body:before,body:after{content:"";position:fixed;top:0;bottom:0;width:7vw;max-width:110px;z-index:0;pointer-events:none;
+ background:repeating-linear-gradient(90deg,#3d050b 0,#8b1220 18px,#5c0a12 30px,#2a0307 42px);box-shadow:0 0 40px #000}
+body:before{left:0}body:after{right:0}
+header,main,footer{position:relative;z-index:1}
+/* scalloped valance */
+header{margin:0 7vw;padding:18px 22px 26px;text-align:center;background:linear-gradient(#6d0d17,#3d050b);
+ border-bottom:4px solid var(--gold);box-shadow:0 10px 30px #000c;display:flex;flex-direction:column;align-items:center;gap:12px}
+.logo{display:inline-block;padding:14px 34px;border:3px solid var(--gold);border-radius:6px;background:#120707;position:relative;
+ box-shadow:0 0 0 6px #120707,0 0 0 9px var(--gold),0 0 30px #e8b84a55}
+.logo:before,.logo:after{content:"";position:absolute;left:8px;right:8px;height:8px;
+ background:radial-gradient(circle,var(--gold2) 0 2.5px,#e8b84a66 3.5px,transparent 4.5px) 0 0/16px 8px repeat-x;animation:blink 1.2s steps(2) infinite}
+.logo:before{top:-1px}.logo:after{bottom:-1px;animation-delay:.6s}
+@keyframes blink{50%{filter:brightness(.45)}}
+.logo span{font-family:Limelight,serif;font-size:40px;letter-spacing:4px;color:var(--gold2);text-shadow:0 0 8px #e8b84a,0 0 22px #e8b84a88}
+.logo .c2{color:var(--gold)}
+.logo small{display:block;font-size:11px;color:var(--mut);letter-spacing:6px;margin-top:2px}
+nav button{background:transparent;color:var(--gold2);border:1px solid var(--gold);padding:8px 16px;border-radius:3px;margin:0 4px;cursor:pointer;
+ font-family:inherit;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+nav button:hover{background:var(--gold);color:#1a0a05}
+main{max-width:1080px;margin:0 auto;padding:26px 4vw 60px}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:26px;align-items:start}
+.col{min-width:0}
+.rail{border-left:1px dashed #e8b84a44;padding-left:16px;position:sticky;top:16px}
+.rail h3{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:0 0 10px}
+.mini{padding:8px 10px;margin-bottom:8px;background:#ffffff08;border-left:2px solid #e8b84a55;font-size:13px}
+.mini h3{margin:0 0 3px;font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.mini p{margin:0;color:#cbbfa6}
+@media(max-width:760px){.stage{grid-template-columns:1fr}.rail{position:static;border-left:none;border-top:1px dashed #e8b84a44;padding:12px 0 0}}
+.daybar{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:13px;margin-bottom:18px;letter-spacing:2px;text-transform:uppercase}
+.ticket{background:var(--gold);color:#2a0a05;font-family:Limelight,serif;font-size:18px;padding:8px 22px;position:relative;
+ -webkit-mask:radial-gradient(circle 7px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
+.dots{display:flex;gap:6px}.dots span{width:22px;height:22px;border-radius:50%;border:2px solid #e8b84a55}
+.dots .x{background:var(--red);border-color:var(--red)}.dots .w{background:var(--gold);border-color:var(--gold);box-shadow:0 0 10px var(--gold)}
+/* film-strip clue cards */
+.clue{background:var(--card);padding:16px 40px;margin-bottom:12px;position:relative;animation:pop .5s ease;border-top:1px solid #000;border-bottom:1px solid #000}
+.clue:before,.clue:after{content:"";position:absolute;top:0;bottom:0;width:22px;background:#000 radial-gradient(circle at 50% 50%,#3a2a1c 0 4px,transparent 5px) 0 0/22px 18px repeat-y}
+.clue:before{left:0}.clue:after{right:0}
+.clue h3{margin:0 0 6px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+.clue p{margin:0;font-size:18px;font-weight:600}
+.clue .big{font-size:22px;font-family:'Playfair Display',serif}
+.clue img{display:block;margin:12px auto 0;max-width:100%;max-height:260px;width:auto;height:auto;object-fit:contain;
+ background:#0a0606;border:1px solid #3a2a1c;box-shadow:0 0 0 6px #0a0606,0 0 0 7px #e8b84a55}
+.clue img.wide{width:100%;max-height:260px;object-fit:cover}
+.clue.locked{opacity:.4;animation:none}.clue.locked p{font-size:14px;color:var(--mut)}
+.year{font-family:Limelight,serif;color:var(--gold);font-size:30px}
+.hintline{margin-top:10px!important;font-size:14px!important;color:var(--mut);font-family:'Josefin Sans',sans-serif!important}
+.hintline b{color:var(--gold);letter-spacing:6px;font-size:20px}
+.hintbtn{background:transparent;border:1px dashed var(--gold);color:var(--gold);font-family:inherit;font-size:12px;
+ padding:6px 12px;cursor:pointer;margin-left:8px;letter-spacing:1px}
+.hintbtn:hover{background:var(--gold);color:#1a0a05}
+.history h3{margin:0 0 6px;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase}
+.history p{margin:0;font-size:15px;line-height:1.5;color:#e3d5b8}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.guessbox{position:relative;display:flex;gap:8px;margin:22px 0 8px}
+#guess{flex:1;padding:15px;border:1px solid var(--gold);background:#0f0807;color:var(--txt);font-size:17px;outline:none;font-family:inherit;border-radius:3px}
+#guess:focus{box-shadow:0 0 18px #e8b84a55}
+.btn{background:linear-gradient(var(--velvet2),var(--velvet));color:var(--gold2);border:1px solid var(--gold);border-radius:3px;padding:0 24px;font-weight:700;
+ font-size:14px;letter-spacing:3px;cursor:pointer;font-family:inherit;text-transform:uppercase}
+.btn:hover{box-shadow:0 0 16px #e8b84a77}
+#sugg{position:absolute;top:100%;left:0;right:110px;background:#0f0807;border:1px solid var(--gold);z-index:5;max-height:240px;overflow:auto;display:none}
+#sugg div{padding:10px 14px;cursor:pointer}#sugg div:hover,#sugg div.on{background:var(--velvet)}
+.past{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.past span{background:#c8323c22;border:1px dashed var(--red);padding:5px 12px;font-size:13px;text-decoration:line-through;color:#e9a9a9}
+#msg{min-height:22px;color:var(--gold);font-size:14px}
+.fact{margin-top:12px;border-top:1px solid #e8b84a33;padding-top:10px}
+.fact h4{margin:0 0 4px;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.fact p{margin:0;font-size:14px;line-height:1.5;color:#cdbfa4}
+.facts{margin-top:16px;border-top:1px solid #e8b84a33;padding-top:12px;text-align:left}
+.facts h4{margin:0 0 8px;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.facts ol{margin:0;padding-left:20px}.facts li{font-size:14px;line-height:1.5;color:#cdbfa4;margin-bottom:4px}
+/* result = the big screen */
+.result{text-align:center;background:radial-gradient(ellipse at 50% 30%,#2a1d12,#0d0807 75%);padding:28px 24px;margin-top:18px;border:6px solid #1b120b;
+ box-shadow:0 0 0 2px var(--gold),0 0 60px #e8b84a33;animation:pop .6s}
+.result h2{font-family:Limelight,serif;font-size:46px;margin:0;color:var(--gold2);text-shadow:0 0 14px var(--gold)}
+.result.lose h2{color:#ffb3b3;text-shadow:0 0 14px var(--red)}
+.result img{max-width:180px;margin:14px 0;box-shadow:0 10px 30px #000;border:2px solid var(--gold)}
+.result .title{font-size:24px;font-family:'Playfair Display',serif;font-weight:700}
+.reveal{color:var(--gold);margin-top:6px}
+.share{font-size:26px;letter-spacing:4px;margin:12px 0}
+.modal{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:20;padding:16px}
+.modal .box{background:#140b0a;padding:26px;max-width:440px;width:100%;position:relative;border:1px solid var(--gold);box-shadow:0 0 0 5px #140b0a,0 0 0 6px #e8b84a66}
+.modal .close{position:absolute;right:14px;top:10px;background:none;border:none;color:var(--gold);font-size:22px;cursor:pointer}
+.modal input{width:100%;padding:12px;border:1px solid #5a4630;background:#0b0606;color:var(--txt);margin:6px 0 12px;font-size:15px;font-family:inherit}
+.modal h2{font-family:Limelight,serif;margin-top:0;color:var(--gold);font-weight:400}
+table{width:100%;border-collapse:collapse}td,th{padding:8px;text-align:left;border-bottom:1px solid #e8b84a22}
+th{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+tr.me{background:#e8b84a22}
+.note{font-size:12px;color:var(--mut)}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:20px 9vw}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a0a05;padding:10px 20px;font-weight:700;display:none;z-index:30;letter-spacing:1px}
+select{background:#0b0606;color:var(--txt);border:1px solid #5a4630;padding:4px}
+@media(max-width:600px){.logo span{font-size:28px}main{padding:20px 10vw 40px}.clue{padding:14px 30px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span class="c1">COINCI</span><span class="c2">DLE</span><small>COINCIDLEMOVIE.COM</small></div>
+  <nav><button onclick="openM('how')">How to play</button><button onclick="openLB()">🏆 Leaderboard</button><button id="acctBtn" onclick="openM('acct')">Sign up</button></nav>
+</header>
+
+<main>
+  <div class="daybar"><span class="ticket" id="dayLbl">#1</span><span id="dateLbl"></span><div class="dots" id="dots"></div></div>
+  <div class="stage">
+    <div class="col">
+      <div id="clue1"></div>
+      <div id="active"></div>
+      <div class="guessbox">
+        <input id="guess" placeholder="Name that movie…" autocomplete="off">
+        <button class="btn" onclick="submitGuess()">Guess</button>
+        <div id="sugg"></div>
+      </div>
+      <div id="msg"></div>
+      <div id="result"></div>
+    </div>
+    <aside class="rail">
+      <h3>Past clues</h3>
+      <div id="rail"></div>
+      <div class="past" id="past"></div>
+    </aside>
+  </div>
+</main>
+<footer>New puzzle every day at midnight Central Time.<br>Images via Wikipedia / Wikimedia Commons. This product will use the TMDB API but is not endorsed or certified by TMDB.</footer>
+
+<div class="modal" id="how"><div class="box"><button class="close" onclick="closeM('how')">×</button>
+<h2>How to play</h2>
+<p>Guess the mystery movie. It came out the <b>same year</b> as the historical event shown.</p>
+<p>You get 5 guesses, and each miss reveals a new clue:</p>
+<ol><li>The historical event</li><li>Genre</li><li>A supporting actor or actress</li><li>A famous quote</li><li>The main character</li></ol>
+<p>Excelsior! · Superb! · Outstanding! · Nice Job! · Good Stuff.</p></div></div>
+
+<div class="modal" id="acct"><div class="box"><button class="close" onclick="closeM('acct')">×</button>
+<h2 id="acctTitle">Join the leaderboard</h2>
+<div id="acctForm">
+<label>Email</label><input id="em" type="email" placeholder="you@example.com">
+<label>Username</label><input id="un" maxlength="16" placeholder="MovieBuff99">
+<button class="btn" style="padding:12px;width:100%" onclick="register()">Create account</button></div>
+<div id="acctIn" style="display:none"><p>Signed in as <b id="who"></b></p><button class="btn" style="padding:12px" onclick="logout()">Sign out</button></div>
+<p class="note">Test version: your account is saved in this browser only.</p></div></div>
+
+<div class="modal" id="lb"><div class="box"><button class="close" onclick="closeM('lb')">×</button>
+<h2>🏆 Today's leaderboard</h2><div id="lbBody"></div>
+<p class="note">Test version: sample players are shown alongside your own score.</p></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const LAUNCH = "2026-11-11"; // Day 1 (Central Time)
+const P = [
+["Top Gun",1986,"The Chernobyl nuclear disaster","Chernobyl disaster","Action","Val Kilmer","I feel the need... the need for speed!","Maverick","Tom Cruise" ,["Reactor 4 exploded during a safety test on the night of 26 April.","Firefighters and miners were sent in without proper protection.","Radiation spread over Ukraine, Belarus and much of Europe.","A steel shelter was built over the reactor in late 1986.","It remains the worst nuclear accident in history."]],
+["Inception",2010,"The Deepwater Horizon oil spill","Deepwater Horizon oil spill","Sci-Fi","Joseph Gordon-Levitt","You mustn't be afraid to dream a little bigger, darling.","Dom Cobb","Leonardo DiCaprio" ,["The rig exploded 41 miles off the Louisiana coast on 20 April.","Eleven workers died and the platform sank two days later.","The well leaked for 87 days before it was capped in July.","Around 4 million barrels of oil entered the Gulf.","It is the largest marine oil spill ever recorded."]],
+["Monty Python and the Holy Grail",1975,"King Faisal of Saudi Arabia is assassinated","Faisal of Saudi Arabia","Comedy","John Cleese","'Tis but a scratch.","King Arthur","Graham Chapman" ,["Faisal was shot at a royal ceremony in Riyadh on 25 March.","His half-brother's son fired three shots at close range.","The gunman was executed within months.","Faisal had been king for just over ten years.","The killing changed oil politics for the rest of the decade."]],
+["Toy Story",1995,"Microsoft releases Windows 95","Windows 95","Animation","Don Rickles","To infinity and beyond!","Woody","Tom Hanks" ,["Windows 95 went on sale on 24 August 1995.","It introduced the Start menu and the taskbar.","People queued at midnight to buy it in some cities.","The Rolling Stones song 'Start Me Up' launched the ad campaign.","Within a year it ran on most of the world's PCs."]],
+["Tenet",2020,"The WHO declares COVID-19 a pandemic","COVID-19 pandemic","Sci-Fi Action","Robert Pattinson","Don't try to understand it. Feel it.","The Protagonist","John David Washington" ,["The WHO declared a pandemic on 11 March 2020.","Italy locked down its whole population two days earlier.","Broadway and the NBA shut down within a week.","Most of the world's cinemas closed for months.","The virus had spread to every continent by mid-2020."]],
+["Star Wars",1977,"Elvis Presley dies","Elvis Presley","Sci-Fi","Harrison Ford","May the Force be with you.","Luke Skywalker","Mark Hamill" ,["Elvis was found dead at Graceland on 16 August 1977.","He was 42 years old.","Fans gathered outside the gates within hours.","Tens of thousands filed past his coffin in Memphis.","His funeral drew more mourners than any since Kennedy's."]],
+["Indiana Jones and the Last Crusade",1989,"The Berlin Wall falls","Fall of the Berlin Wall","Adventure","Sean Connery","X never, ever marks the spot.","Indiana Jones","Harrison Ford" ,["The Berlin Wall opened on the night of 9 November 1989.","A confused spokesman said the rules applied 'immediately'.","Crowds gathered at the checkpoints and were let through.","People danced on top of the wall in the following days.","Germany reunited less than a year later."]],
+["Ratatouille",2007,"Apple releases the first iPhone","IPhone (1st generation)","Animation","Peter O'Toole","Anyone can cook.","Remy","Patton Oswalt" ,["Apple's first iPhone went on sale on 29 June 2007.","It combined a phone, an iPod and an internet browser.","There was no app store at launch; that came a year later.","The first model cost $499 and had no front camera.","It changed how the world uses computers."]],
+["The Godfather",1972,"The Watergate break-in","Watergate scandal","Crime","James Caan","I'm gonna make him an offer he can't refuse.","Vito Corleone","Marlon Brando" ,["Five men were caught in Democratic Party offices on 17 June 1972.","They were there to wiretap phones and photograph documents.","The Washington Post tied the break-in to the White House.","Revelations dragged on for two more years.","Nixon resigned rather than face impeachment."]],
+["The Matrix",1999,"The euro currency is introduced","Euro","Sci-Fi","Laurence Fishburne","There is no spoon.","Neo","Keanu Reeves" ,["The euro was adopted on 1 January 1999 by eleven countries.","It existed at first only for banks and accounting.","Notes and coins arrived in January 2002.","Britain, Denmark and Sweden kept their own currencies.","It is now used by 20 EU countries."]],
+["Return of the Jedi",1983,"Sally Ride becomes the first American woman in space","Sally Ride","Sci-Fi","Carrie Fisher","It's a trap!","Luke Skywalker","Mark Hamill" ,["Ride flew aboard the shuttle Challenger on 18 June 1983.","She was the first American woman in orbit.","The crew deployed two communications satellites.","She later helped investigate the Challenger and Columbia disasters.","She died of pancreatic cancer in 2012."]],
+["Barbie",2023,"The coronation of King Charles III","Coronation of Charles III and Camilla","Comedy","Ryan Gosling","I'm just Ken.","Barbie","Margot Robbie" ,["The Live Aid concerts were held on 13 July 1985.","London and Philadelphia shows ran in parallel for 16 hours.","About 1.9 billion people watched worldwide.","Bob Geldof organised it in ten weeks.","It raised more than $100 million for famine relief in Ethiopia."]],
+["Butch Cassidy and the Sundance Kid",1969,"Apollo 11 lands on the Moon","Apollo 11","Western","Katharine Ross","Who are those guys?","Butch Cassidy","Paul Newman" ,["The Berlin Wall opened on 9 November 1989.","Border guards gave up checking papers that night.","Crowds crossed freely for the first time since 1961.","Cranes pulled the wall down over the following weeks.","It had divided the city for 28 years."]],
+["Terminator 2: Judgment Day",1991,"The Soviet Union dissolves","Dissolution of the Soviet Union","Action","Linda Hamilton","Hasta la vista, baby.","The Terminator","Arnold Schwarzenegger" ,["The Curiosity rover landed on 6 August 2012.","Its descent was nicknamed the 'seven minutes of terror'.","It has since found evidence of ancient water and organic molecules.","It was built to last 90 days.","It is still working on Mars today."]],
+["The Avengers",2012,"NASA's Curiosity rover lands on Mars","Curiosity (rover)","Superhero","Scarlett Johansson","Puny god.","Tony Stark / Iron Man","Robert Downey Jr."],
+["The Shining",1980,"Mount St. Helens erupts","1980 eruption of Mount St. Helens","Horror","Shelley Duvall","Here's Johnny!","Jack Torrance","Jack Nicholson" ,["Hijackers struck the World Trade Center and the Pentagon on 11 September.","A fourth plane went down in a Pennsylvania field.","Nearly 3,000 people died.","All flights over the United States were grounded.","Air travel and security changed permanently."]],
+["Forrest Gump",1994,"Nelson Mandela is elected president of South Africa","Nelson Mandela","Drama","Gary Sinise","My mama always said life was like a box of chocolates.","Forrest Gump","Tom Hanks" ,["South Africa's first democratic election ran from 26 to 29 April 1994.","Mandela's party won just under two-thirds of the vote.","He was sworn in on 10 May in Pretoria.","He had spent 27 years in prison.","He served one term and stepped down in 1999."]],
+["Willy Wonka & the Chocolate Factory",1971,"Walt Disney World opens","Walt Disney World","Family Musical","Jack Albertson","We are the music makers, and we are the dreamers of dreams.","Willy Wonka","Gene Wilder" ,["Walt Disney World opened on 1 October 1971.","It was the second Disney park after California's.","A monorail and a ferry carried the first visitors in.","Opening day drew about 10,000 guests.","It is now the largest theme resort in the world."]],
+["Knives Out",2019,"The first image of a black hole is released","Event Horizon Telescope","Mystery","Chris Evans","A donut hole in a donut's hole.","Benoit Blanc","Daniel Craig" ,["The Event Horizon Telescope image was released on 10 April 2019.","It showed the shadow of a black hole in galaxy M87.","Eight radio observatories on four continents took part.","They worked together as one Earth-sized telescope.","The image took two years to process."]],
+["Back to the Future",1985,"The Live Aid concerts","Live Aid","Sci-Fi Comedy","Christopher Lloyd","Roads? Where we're going, we don't need roads.","Marty McFly","Michael J. Fox" ,["The Live Aid concerts ran on 13 July 1985.","The Philadelphia crowd was around 90,000.","Prince did not perform despite a slot.","The event was broadcast in more than 100 countries.","It inspired later benefit concerts such as Live 8."]],
+["Titanic",1997,"Hong Kong is handed back to China","Handover of Hong Kong","Romance","Billy Zane","I'm the king of the world!","Jack Dawson","Leonardo DiCaprio" ,["Beijing and London agreed on the handover in 1984.","Britain handed Hong Kong back on 1 July 1997 at midnight.","The last governor sailed away on the royal yacht.","Hong Kong became a special administrative region.","Its constitution promises a high degree of autonomy."]],
+["The Godfather Part II",1974,"Richard Nixon resigns","Resignation of Richard Nixon","Crime","Robert De Niro","Keep your friends close, but your enemies closer.","Michael Corleone","Al Pacino" ,["Nixon resigned on 9 August 1974.","He announced it on television the night before.","Gerald Ford was sworn in as president the next day.","Ford pardoned him a month later.","Nixon was the first president to leave office this way."]],
+["Obsession",2026,"The FIFA World Cup is hosted by the U.S., Canada and Mexico","2026 FIFA World Cup","Horror","Inde Navarrette","You only get one wish. (tagline)","Bear Bailey","Michael Johnston" ,["The 2026 World Cup is being hosted by the U.S., Canada and Mexico.","It is the first World Cup with 48 teams.","The tournament runs across 16 cities in three countries.","It is the first time three nations have co-hosted.","The final is at MetLife Stadium in New Jersey."]],
+["E.T. the Extra-Terrestrial",1982,"The Falklands War","Falklands War","Sci-Fi Family","Drew Barrymore","E.T. phone home.","Elliott","Henry Thomas" ,["Argentina invaded the Falklands on 2 April 1982.","Britain sent a task force within days.","The conflict lasted ten weeks.","Nearly 1,000 people were killed.","Argentina still claims the islands as Las Malvinas."]],
+["Jurassic Park",1993,"The European Union is formally established","Maastricht Treaty","Sci-Fi Adventure","Jeff Goldblum","Life, uh, finds a way.","Dr. Alan Grant","Sam Neill" ,["Twelve countries signed the Maastricht Treaty on 7 February 1992.","It came into force in November 1993.","It created EU citizenship alongside national citizenship.","It set the path to a single currency.","The European Union now has 27 member states."]],
+["Alien",1979,"The Iranian Revolution","Iranian revolution","Sci-Fi Horror","John Hurt","I admire its purity.","Ellen Ripley","Sigourney Weaver" ,["Protests forced the Shah to leave Iran on 16 January 1979.","Khomeini returned from exile two weeks later.","The monarchy was abolished in April.","Militants seized the US embassy in November.","The revolution reshaped the Middle East."]],
+["The Dark Knight",2008,"Barack Obama is elected president","2008 United States presidential election","Superhero","Aaron Eckhart","Why so serious?","Bruce Wayne / Batman","Christian Bale" ,["Obama was elected on 4 November 2008.","He won 365 electoral votes to McCain's 173.","More than 130 million people voted.","He took office on 20 January 2009.","The country was in the worst financial crisis since the 1930s."]],
+["Ghostbusters",1984,"Apple launches the Macintosh","Macintosh 128K","Comedy","Sigourney Weaver","He slimed me.","Dr. Peter Venkman","Bill Murray" ,["The Macintosh went on sale on 24 January 1984.","A Super Bowl ad introduced it two days earlier.","It cost $2,495.","It was the first mass-market computer with a mouse and icons.","Every desktop interface still follows its pattern."]],
+["Rocky",1976,"The U.S. Bicentennial","United States Bicentennial","Sports Drama","Talia Shire","Yo, Adrian!","Rocky Balboa","Sylvester Stallone" ,["America marked 200 years of independence on 4 July 1976.","Tall ships from around the world sailed into New York Harbor.","President Ford spoke at Valley Forge.","The Bicentennial Bell was rung in Philadelphia.","Fireworks lit up the skies in cities nationwide."]],
+["Die Hard",1988,"The Seoul Summer Olympics","1988 Summer Olympics","Action","Alan Rickman","Welcome to the party, pal!","John McClane","Bruce Willis" ,["The Seoul Olympics opened on 17 September 1988.","South Korea had been under military rule earlier that decade.","The games drew more than 8,000 athletes from 159 nations.","They were the last Summer Games of the Cold War.","The host city spent years preparing the venues and the subway."]],
+];
+const WIKI_MOVIE={"Tenet":"Tenet (film)","Star Wars":"Star Wars (film)","Ratatouille":"Ratatouille (film)","Barbie":"Barbie (film)","The Avengers":"The Avengers (2012 film)","The Shining":"The Shining (film)","Titanic":"Titanic (1997 film)","Jurassic Park":"Jurassic Park (film)","Alien":"Alien (film)","Rocky":"Rocky","Obsession":"Obsession (2026 film)","Ghostbusters":"Ghostbusters"};
+const EXTRA=["The Lion King","Pulp Fiction","Fight Club","Goodfellas","Casablanca","Jaws","Psycho","Gladiator","The Departed","Interstellar","Avatar","Frozen","Up","WALL-E","Finding Nemo","Shrek","The Incredibles","Inside Out","Coco","Moana","Encanto","Oppenheimer","Dune","Dune: Part Two","Everything Everywhere All at Once","Parasite","Joker","Get Out","Us","Nope","Black Panther","Avengers: Endgame","Avengers: Infinity War","Iron Man","Spider-Man","Spider-Man: No Way Home","The Empire Strikes Back","Raiders of the Lost Ark","Temple of Doom","Grease","Saturday Night Fever","Taxi Driver","Apocalypse Now","Scarface","The Terminator","Aliens","Predator","RoboCop","Top Gun: Maverick","Mission: Impossible","Mean Girls","Clueless","Legally Blonde","The Breakfast Club","Ferris Bueller's Day Off","Sixteen Candles","Home Alone","The Princess Bride","Beetlejuice","Batman","Batman Begins","The Dark Knight Rises","Superman","Gremlins","The Goonies","Big","Ghost","Pretty Woman","Dirty Dancing","Footloose","Fargo","Heat","Se7en","The Silence of the Lambs","Schindler's List","Saving Private Ryan","Braveheart","The Shawshank Redemption","Good Will Hunting","Men in Black","Independence Day","Armageddon","Twister","Scream","Halloween","A Nightmare on Elm Street","The Exorcist","Carrie","Rosemary's Baby","2001: A Space Odyssey","Close Encounters of the Third Kind","Blade Runner","Tron","The Lord of the Rings: The Fellowship of the Ring","The Two Towers","The Return of the King","Harry Potter and the Sorcerer's Stone","Pirates of the Caribbean","The Hunger Games","Twilight","La La Land","Whiplash","Mad Max: Fury Road","Gravity","The Social Network","Slumdog Millionaire","No Country for Old Men","There Will Be Blood","Juno","Superbad","The Hangover","Bridesmaids","Step Brothers","Anchorman","Elf","Napoleon Dynamite","Mamma Mia!","The Notebook","The Devil Wears Prada","Wicked","Inside Out 2","Deadpool","Sinners","Weapons","Smile","M3GAN","Talk to Me","Barbarian","Hereditary","Midsommar","The Truman Show","Breakfast at Tiffany's","The Great Escape","The Sting","Jaws 2","Rocky II","Grease 2","Apollo 13","Cast Away","Big Fish","The Sixth Sense","American Pie","Office Space","Groundhog Day","Wayne's World","Mrs. Doubtfire","The Mask","Dumb and Dumber","Pulp Fiction","Speed","True Lies","Jumanji","Casino","Toy Story 2","Toy Story 3","Monsters, Inc.","Cars","Glass Onion"];
+const MOVIES=[...new Set([...P.map(p=>p[0]),...EXTRA])].sort();
+const norm=s=>s.toLowerCase().replace(/^the /,"").replace(/[^a-z0-9]/g,"");
+
+// ---- day logic (Central Time) ----
+function centralDate(){return new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago"}).format(new Date())}
+const todayNum=Math.max(1,Math.round((Date.parse(centralDate())-Date.parse(LAUNCH))/864e5)+1);
+const dayNum=todayNum;
+const [ans,yr,evt,evtWiki,genre,supp,quote,charName,charActor,FACTS]=P[(dayNum-1)%P.length];
+const KEY="coincidle-"+dayNum;
+let st=JSON.parse(localStorage.getItem(KEY)||'{"g":[],"done":false,"win":false,"hints":0}');
+if(st.hints===undefined){st.hints=0}
+
+document.getElementById("dayLbl").textContent="#"+dayNum;
+document.getElementById("dateLbl").textContent=centralDate();
+
+const imgCache={};
+async function wikiImg(title){
+  if(imgCache[title]!==undefined)return imgCache[title];
+  try{const r=await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title.replace(/ /g,"_")));
+   const j=await r.json();imgCache[title]=(j.originalimage||j.thumbnail||{}).source||null;}catch(e){imgCache[title]=null}
+  return imgCache[title];
+}
+function imgTag(id,title,cls){wikiImg(title).then(u=>{const el=document.getElementById(id);if(el&&u){el.src=u;el.style.display="block"}});
+  return `<img id="${id}" class="${cls||""}" style="display:none" alt="">`}
+
+const CLUES=[
+ ()=>`<h3>Clue 2 · Genre</h3><p class="big">🎭 ${genre}</p>`,
+ ()=>`<h3>Clue 3 · Supporting cast</h3><p class="big">⭐ ${supp}</p>${imgTag("i3",supp)}`,
+ ()=>`<h3>Clue 4 · Famous quote</h3><p class="big">“${quote}”</p>`,
+ ()=>`<h3>Clue 5 · Main character</h3><p class="big">🎬 ${charName} <span style="color:var(--mut);font-size:15px">(played by ${charActor})</span></p>${imgTag("i5",charActor)}`
+];
+const LOCK=["Genre","Supporting actor or actress","Famous quote","Main character"];
+const NUDGE=["Which movie shared that year?","Keep the year in mind — what came out that same year?",
+ "Two guesses left. Which film shares the year with the event above?","Last shot at the coincidence."];
+const HEAD=[()=>`<h3>Clue 1 · Now showing: the coincidence</h3><p class="big">${evt}</p>${hintBox()}${imgTag("i1",evtWiki,"wide")}`,
+ (n)=>`<h3>Clue 1 · The coincidence</h3><p class="big">${evt}</p>${hintBox()}${imgTag("i1",evtWiki,"wide")}<p style="color:var(--mut);font-size:14px;margin-top:10px">${NUDGE[n]}</p>`];
+const WIN=["Excelsior!","Superb!","Outstanding!","Nice Job!","Good Stuff."];
+
+function hintBox(){
+  if(st.hints>=2||st.done)return `<p class="hintline">Year so far: <b>${revealed()}</b></p>`;
+  return `<p class="hintline">Year so far: <b>${revealed()}</b> <button class="hintbtn" onclick="useHint()">🔍 Reveal a digit (costs 1 guess)</button></p>`;
+}
+function revealed(){
+  const digits=String(yr);
+  const shown=Math.min(st.hints,digits.length-1);
+  return digits.split("").map((d,i)=>i<shown?d:"?").join("");
+}
+function useHint(){
+  if(st.done)return;
+  if(st.hints>=String(yr).length-1)return;
+  st.hints++;
+  st.g.push("hint:"+st.hints);
+  localStorage.setItem(KEY,JSON.stringify(st));
+  const m=document.getElementById("msg");
+  if(st.g.length>=5){st.done=true;saveScore();m.textContent="";}
+  else m.textContent="Hint spent — you have "+(5-st.g.length)+" guess"+(5-st.g.length===1?"":"es")+" left.";
+  localStorage.setItem(KEY,JSON.stringify(st));render();
+}
+
+
+function render(){
+  const gk=tries();                       // guesses + hints already spent
+  const step=Math.min(4,Math.max(0,gk));  // 0 = before the first guess
+  document.getElementById("clue1").innerHTML=`<div class="clue">${step?HEAD[1](Math.min(3,step-1)):HEAD[0]()}</div>`;
+  // only the clue that belongs to this guess is on screen
+  document.getElementById("active").innerHTML=(st.done||step===0)?""
+    :`<div class="clue">${CLUES[step-1]()}<div class="fact"><h4>📜 What happened</h4><p>${FACTS[step-1]}</p></div></div>`;
+  // everything already used slides over to the rail
+  let rail="";
+  for(let i=0;i<step;i++)rail+=`<div class="mini">${CLUES[i]().replace(/<img[^>]*>/g,"")}</div>`;
+  rail+=`<div class="mini"><h3>Clue 1 · The coincidence</h3><p>${evt}</p><p style="color:#a8977a;margin-top:4px">${FACTS[0]}</p></div>`;
+  document.getElementById("rail").innerHTML=rail;
+  document.getElementById("dots").innerHTML=[0,1,2,3,4].map(i=>{
+    if(i>=st.g.length)return"<span></span>";return `<span class="${st.win&&i===st.g.length-1?"w":"x"}"></span>`}).join("");
+  document.getElementById("past").innerHTML=st.g.filter(g=>!g.startsWith("hint:")&&norm(g)!==norm(ans)).map(g=>`<span>${g}</span>`).join("");
+  document.querySelector(".guessbox").style.display=st.done?"none":"flex";
+  if(st.done)showResult();
+}
+const tries=()=>st.g.length;
+function emojiLine(){const n=st.win?tries()-1:5;return [0,1,2,3,4].map(i=>i<n?"🟥":(st.win&&i===n?"🟩":"⬜")).join("")}
+async function showResult(){
+  const n=tries();
+  const head=st.win?WIN[n-1]:"Bummer :(";
+  document.getElementById("result").innerHTML=`<div class="result ${st.win?"":"lose"}">
+   <h2>${head}</h2><p>${st.win?`You got it in ${n} guess${n>1?"es":""}!`:"The answer was:"}</p>
+   <img id="poster" style="display:none" alt=""><div class="title">${ans}</div><div class="reveal">Released in <b>${yr}</b> — the year of the coincidence:<br>${evt}</div>
+   <div class="share">${emojiLine()}</div>
+   ${st.hints?`<p class="note">🔍 ${st.hints} digit${st.hints>1?"s":""} revealed — finished in ${tries()} of 5.</p>`:""}
+   <div class="facts"><h4>📜 What happened, from the top</h4><ol>${FACTS.map(f=>`<li>${f}</li>`).join("")}</ol></div>
+   <button class="btn" style="padding:12px 20px" onclick="share()">📋 Copy my score link</button>
+   <p class="note">${user()?"":"Sign up to appear on the daily leaderboard."}</p></div>`;
+  const u=await wikiImg(WIKI_MOVIE[ans]||ans);if(u){const p=document.getElementById("poster");p.src=u;p.style.display="inline-block"}
+}
+function share(){
+  const base="https://coincidlemovie.com";
+  const txt=`Coincidle #${dayNum} 🎬 ${st.win?tries():"X"}/5\n${emojiLine()}\n${base}`;
+  navigator.clipboard.writeText(txt).then(()=>toast("Copied! Paste it to your friends"),()=>prompt("Copy this:",txt));
+}
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.style.display="block";setTimeout(()=>e.style.display="none",2200)}
+
+function submitGuess(){
+  const inp=document.getElementById("guess"),v=inp.value.trim();
+  const m=document.getElementById("msg");
+  if(!v){return}
+  if(st.g.some(g=>norm(g)===norm(v))){m.textContent="You already guessed that one.";return}
+  m.textContent="";st.g.push(v);inp.value="";hideS();
+  if(norm(v)===norm(ans)){st.win=true;st.done=true;saveScore()}
+  else if(st.g.length>=5){st.done=true;saveScore()}
+  localStorage.setItem(KEY,JSON.stringify(st));render();
+}
+
+// ---- autocomplete ----
+const inp=document.getElementById("guess"),sg=document.getElementById("sugg");let si=-1;
+inp.addEventListener("input",()=>{
+  const q=norm(inp.value);if(q.length<2)return hideS();
+  const hits=MOVIES.filter(t=>norm(t).includes(q)).slice(0,8);si=-1;
+  if(!hits.length)return hideS();
+  sg.innerHTML=hits.map(t=>`<div onmousedown="pick(this)">${t}</div>`).join("");sg.style.display="block";
+});
+inp.addEventListener("keydown",e=>{
+  const items=[...sg.children];
+  if(e.key==="ArrowDown"&&items.length){si=(si+1)%items.length;e.preventDefault()}
+  else if(e.key==="ArrowUp"&&items.length){si=(si-1+items.length)%items.length;e.preventDefault()}
+  else if(e.key==="Enter"){if(si>=0&&items[si]){inp.value=items[si].textContent}submitGuess();return}
+  else if(e.key==="Escape")hideS();
+  items.forEach((d,i)=>d.classList.toggle("on",i===si));
+});
+inp.addEventListener("blur",()=>setTimeout(hideS,100));
+function pick(el){inp.value=el.textContent;hideS();inp.focus()}
+function hideS(){sg.style.display="none"}
+
+// ---- accounts + leaderboard (local test version) ----
+const user=()=>JSON.parse(localStorage.getItem("coincidle-user")||"null");
+function register(){
+  const em=document.getElementById("em").value.trim(),un=document.getElementById("un").value.trim();
+  if(!/^\S+@\S+\.\S+$/.test(em))return alert("Please enter a valid email.");
+  if(un.length<3)return alert("Username must be at least 3 characters.");
+  localStorage.setItem("coincidle-user",JSON.stringify({em,un}));
+  if(st.done)saveScore();
+  refreshAcct();closeM("acct");toast("Welcome, "+un+"!");render();
+}
+function logout(){localStorage.removeItem("coincidle-user");refreshAcct();closeM("acct")}
+function refreshAcct(){const u=user();
+  document.getElementById("acctBtn").textContent=u?"👤 "+u.un:"Sign up";
+  document.getElementById("acctForm").style.display=u?"none":"block";
+  document.getElementById("acctIn").style.display=u?"block":"none";
+  document.getElementById("acctTitle").textContent=u?"Your account":"Join the leaderboard";
+  if(u)document.getElementById("who").textContent=u.un}
+function saveScore(){const u=user();if(!u||!st.done)return;
+  const lb=JSON.parse(localStorage.getItem("coincidle-lb-"+dayNum)||"{}");
+  if(!lb[u.un])lb[u.un]={g:st.win?tries():6,t:Date.now()};
+  localStorage.setItem("coincidle-lb-"+dayNum,JSON.stringify(lb))}
+function openLB(){
+  const names=["ReelDeal","PopcornQueen","CineMax","DeskBreak","FilmNerd42","LectureSkipper","SpoilerAlert","ClapperBoard"];
+  let seed=dayNum*97;const rnd=()=>((seed=seed*16807%2147483647)/2147483647);
+  const rows=names.map((n,i)=>({n,g:1+Math.floor(rnd()*6),t:i}));
+  const lb=JSON.parse(localStorage.getItem("coincidle-lb-"+dayNum)||"{}");
+  for(const k in lb)rows.push({n:k,g:lb[k].g,t:lb[k].t,me:true});
+  rows.sort((a,b)=>a.g-b.g||a.t-b.t);
+  document.getElementById("lbBody").innerHTML=`<table><tr><th>#</th><th>Player</th><th>Score</th></tr>${rows.map((r,i)=>`<tr class="${r.me?"me":""}"><td>${i+1}</td><td>${r.n}</td><td>${r.g>5?"X/5":r.g+"/5"}</td></tr>`).join("")}</table>
+   ${user()?"":"<p>Sign up to get on the board!</p>"}`;
+  openM("lb")}
+function openM(id){document.getElementById(id).style.display="flex"}
+function closeM(id){document.getElementById(id).style.display="none"}
+
+// one-time reset so this build starts clean
+if(!localStorage.getItem("coincidle-v1-reset")){
+  Object.keys(localStorage).filter(k=>k.indexOf("coincidle-")===0).forEach(k=>localStorage.removeItem(k));
+  localStorage.setItem("coincidle-v1-reset","1");
+}
+refreshAcct();render();
+if(!localStorage.getItem("coincidle-seen")){openM("how");localStorage.setItem("coincidle-seen",1)}
+</script>
+</body>
+</html>
